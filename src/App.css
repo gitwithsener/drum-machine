@@ -1,0 +1,123 @@
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.drumMachine {
+  position: relative;
+  width: 700px;
+  /* height: 300px; */
+  text-align: center;
+  background-color: rgb(13, 32, 49);
+  padding: 10px;
+  outline: 5px solid rgb(202, 26, 135);
+  background-color: rgb(37, 63, 63);
+}
+
+.drum-pads {
+  display: inline-block;
+  width: 320px;
+  height: 250px;
+  margin: auto;
+  padding-top: 23px;
+  
+}
+
+.drum-pad {
+  position: relative;
+  float: left;
+  width: 80px;
+  height: 66px;
+  border: 2px solid;
+  margin: 5px;
+  padding-top: 5px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 2px solid rgb(211, 197, 178);
+  background-color: rgb(107, 167, 162);
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.control-container {
+  display: inline-block;
+  vertical-align: top;
+  width: 280px;
+  height: 280px;
+  margin-top: 5px;
+  outline: 3px solid rgb(107, 53, 109);
+  border-radius: 135px;
+  background-color: rgb(226, 190, 177);
+  /* border-style: double ; */
+  border-color: rgb(59, 31, 160);
+}
+
+.control {
+  width: 100px;
+  display: inline-block;
+  margin: 20px auto;
+  margin-bottom: 15px;
+  padding: 5px;
+  padding-top: 20px;
+}
+
+.select {
+  width: 60px;
+  height: 26px;
+  border: 1px solid rgb(146, 55, 168);
+  padding: 2px;
+  margin: auto;
+  box-sizing: border-box;
+  cursor: pointer;
+  background-color:rgb(235, 214, 187);
+  border-radius: 5px;
+}
+
+.inner {
+  width: 25px;
+  height: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 1px solid rgb(163, 100, 179);
+  border-radius: 5px;
+  background-color: orangered;
+}
+
+p{
+  margin-bottom: 0;
+  color:rgb(13, 32, 49);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+#display {
+  width: 230px;
+  height: 35px;
+  box-sizing: border-box;
+  padding: 4px;
+  margin: 10px auto;
+  border-radius: 10px;
+  background-color: rgba(9, 112, 197, 0.842);
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.volume {
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 700px) {
+  .drumMachine {
+    transform: scale(0.5);
+    float: right;
+  }
+  .drum-pads {
+    margin-left: 30px;
+  }
+}
