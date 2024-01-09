@@ -114,12 +114,14 @@ const drumPiano = [
     description: "Snare",
   }
 ];
+
 function App() {
   const [playSound, setPlaySound] = useState('');
   const [volume, setVolume] = useState(0.86);
   const [innerOn, setInnerOn] = useState(false);
   const [bankOn, setBankOn] = useState(false);
   const [keyOn, setKeyOn] = useState(null);
+  const soundSet = bankOn ? drumAudio : drumPiano;
 
   useEffect(() => {
     document.addEventListener('keydown', (event) => {
@@ -129,8 +131,8 @@ function App() {
 
   function drumPadPlay(key) {
     if (!innerOn) return;
-
-    const drumPad = drumAudio.find(pad => pad.text === key);
+   
+    const drumPad = soundSet.find(pad => pad.text === key);
     if (drumPad) {
       const drum = document.getElementById(drumPad.text);
       drum.volume = volume;
@@ -166,12 +168,12 @@ function App() {
     <div>
       <div id='drum-machine' className='drumMachine'>
         <div className='drum-pads'>
-          {drumAudio.map((pad) => (
+          {soundSet.map((pad) => (
             <div className='drum-pad' id={pad.description} key={pad.url}
             onClick={() => {
               drumPadPlay(pad.text);
               toggleKey(pad.description)
-            }} style={{ backgroundColor: keyOn === pad.description ? 'coral' : ''}}
+            }} style={{ backgroundColor: keyOn === pad.description && innerOn ? 'coral' : ''}}
             >
               {pad.text}
               <audio className='clip'
@@ -183,17 +185,16 @@ function App() {
           <div className='control'>
             <p>Power</p>
             <div className='select' onClick={toggleInner}>
-              <div className='inner' style={{ float: innerOn ? 'right' : 'left' }}></div>
+              <div className='inner' style={{ float: innerOn ? 'right' : 'left', backgroundColor : innerOn ? 'blue' : 'red' }}></div>
             </div>
           </div>
           <div className='control'>
           <p>Bank</p>
             <div className='select' onClick={toggleBank}>
-              <div className='inner' style={{ float: bankOn ? 'right' : 'left'}}></div>
+              <div className='inner' style={{ float: bankOn ? 'right' : 'left', backgroundColor : bankOn ? 'green' : 'red' }}></div>
             </div>
           </div>
-          <div id='display'>{playSound}
-          </div>
+          <div id='display'>{ innerOn ? playSound : ''}</div>
           <div className='volume'>
             <input max={1} min={0} step={0.01} type='range' value={volume} onChange={volumeChange}/>
           </div>
